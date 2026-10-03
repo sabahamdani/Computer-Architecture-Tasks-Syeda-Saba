@@ -1,0 +1,26 @@
+
+1 global _main
+2 extern _printf
+3
+4 section . data
+5 msg db " Subtraction 15 - 15 = % d -> Zero Flag ( ZF ) = % d " , 10 , 0
+6
+7 section . text
+8 _main :
+9 mov eax , 15
+10 sub eax , 15 ; 15 - 15 = 0 , ALU sets Zero Flag ( ZF = 1)
+11
+12 pushfd
+13 pop ebx ; Read flags register into EBX
+14
+15 shr ebx , 6 ; 
+16 and ebx , 1 ; 
+17
+18 push ebx ; ZF value (1)
+19 push eax ; Result (0)
+20 push msg
+21 call _printf
+22 add esp , 12
+23
+24 xor eax , eax
+25 ret

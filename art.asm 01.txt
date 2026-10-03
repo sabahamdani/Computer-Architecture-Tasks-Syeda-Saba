@@ -1,0 +1,19 @@
+
+
+1 global _main
+2 extern _printf
+3
+4 section . data
+5 msg db " Register EAX = % d " , 10 , 0
+6
+7 section . text
+8 _main :
+9 mov eax , 25 ; 
+10
+11 push eax
+12 push msg
+13 call _printf
+14 add esp , 8
+15
+16 xor eax , eax
+17 ret

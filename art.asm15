@@ -1,0 +1,28 @@
+
+1 global _main
+2 extern _printf
+3
+4 section . data
+5 msg db " Select Line S =% d -> MUX Routed Output : % d " , 10 , 0
+6
+7 section . text
+8 _main :
+9 mov edx , 1 ; Select Line S (1 = Channel B , 0 = Channel A )
+10 mov eax , 100 ; Channel A
+11 mov ebx , 200 ; Channel B
+12
+13 ; MUX Hardware Selection Logic
+14 cmp edx , 1 ; Test control line S
+15 jne . channel_a ; If S != 1 , 
+16 mov eax , ebx ; If S == 1 , 
+17 . channel_a :
+18
+19 push eax ; Routed output value
+20 push edx ; Select line S
+21 push msg
+8
+22 call _printf
+23 add esp , 12
+24
+25 xor eax,eax
+ret

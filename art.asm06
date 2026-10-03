@@ -1,0 +1,23 @@
+
+1 global _main
+2 extern _printf
+3
+4 section . data
+5 msg db " ALU Subtraction : % d - % d = % d " , 10 , 0
+6
+7 section . text
+8 _main :
+9 mov eax , 50 ; 
+10 mov ebx , 18 ; 
+11 sub eax , ebx ; 
+12
+13 push eax
+14 push ebx
+15 push 50
+3
+16 push msg
+17 call _printf
+18 add esp , 16
+19
+20 xor eax , eax
+21 ret

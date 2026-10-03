@@ -1,0 +1,20 @@
+global _main
+2 extern _printf
+3
+4 section . data
+5
+5 msg db " Input : 0 x %02 X -> Inverted ( NOT ) : 0 x %02 X " , 10 , 0
+6
+7 section . text
+8 _main :
+9 mov al , 0 xAA ; 10101010 b
+10 not al ; 
+11
+12 movzx eax , al ; 
+13 push eax
+14 push 0 xAA
+15 push msg
+16 call _printf
+17 add esp , 12
+18
+19 xor

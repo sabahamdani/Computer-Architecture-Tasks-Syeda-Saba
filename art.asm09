@@ -1,0 +1,22 @@
+global _main
+2 extern _printf
+3
+4 section . data
+5 msg db " Input : 0 x %02 X OR Mask : 0x %02 X -> Result : 0 x %02 X " , 10 , 0
+6
+7 section . text
+8 _main :
+9 mov eax , 0 x20 ; 00100000 b
+10 mov ebx , 0 x05 ; Mask : 00000101 b
+11 mov ecx , eax
+12 or ecx , ebx ; 
+13
+14 push ecx
+15 push ebx
+16 push eax
+17 push msg
+18 call _printf
+19 add esp , 16
+20
+21 xor eax , eax
+22 ret

@@ -1,0 +1,25 @@
+global _main
+2 extern _printf
+6
+3
+4 section . data
+5 msg db " Original : % d 
+6
+7 section . text
+8 _main :
+9 mov eax , 7 ; Base value
+10 mov ebx , eax
+11 shl ebx , 1 ; Shift left 1 bit = 7 * 2 = 14
+12
+13 mov ecx , eax
+14 shl ecx , 2 ; Shift left 2 bits = 7 * 4 = 28
+15
+16 push ecx
+17 push ebx
+18 push eax
+19 push msg
+20 call _printf
+21 add esp , 16
+22
+23 xor eax , eax
+24 ret

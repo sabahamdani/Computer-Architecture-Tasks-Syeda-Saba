@@ -1,0 +1,24 @@
+Objective
+Apply single-operand micro-operations to increment and decrement register states.
+1 global _main
+2 extern _printf
+3
+4 section . data
+5 msg db " After INC : EAX = % d
+6
+7 section . text
+8 _main :
+9 mov eax , 10
+10 inc eax ; Micro - op : EAX = EAX + 1 (11)
+11
+12 mov ebx , 20
+13 dec ebx ; Micro - op : EBX = EBX - 1 (19)
+14
+15 push ebx
+16 push eax
+17 push msg
+18 call _printf
+19 add esp , 12
+20
+21 xor eax , eax
+22 ret

@@ -1,0 +1,21 @@
+
+1 global _main
+2 extern _printf
+3
+4 section . data
+5 msg db " Initial : %d -> After XOR self : % d " , 10 , 0
+6
+7 section . text
+8 _main :
+9 mov eax , 888 ; 
+10 mov ebx , eax ; 
+11 xor eax , eax ; 
+12
+13 push eax
+14 push ebx
+15 push msg
+16 call _printf
+17 add esp , 12
+18
+19 xor eax , eax
+20 ret

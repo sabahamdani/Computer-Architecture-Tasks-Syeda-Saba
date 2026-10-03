@@ -1,0 +1,18 @@
+global _main
+2 extern _printf
+
+4 section . data
+5 val dd 48 ; 
+6 msg db " Loaded from RAM : % d " , 10 , 0
+7
+8 section . text
+9 _main :
+10 mov eax , [ val ] ; 
+11
+12 push eax
+13 push msg
+14 call _printf
+15 add esp , 8
+16
+17 xor eax , eax
+18 ret
